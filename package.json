@@ -1,16 +1,19 @@
 {
-  "name": "test",
+  "name": "parallax",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "css:prefix": "postcss --use autoprefixer -o",
+    "css:build": "node-sass src/assets/scss/style.scss | npm run css:prefix -- src/assets/css/style.css",
+    "css:watch": "watch \"npm run css:build\" src/assets/scss",
     "browser-sync": "browser-sync start --server src --files=\"src/*.js,src/components/*.js,src/*.html,src/assets/css/*.css\"",
-    "node-sass": "node-sass -w src/assets/scss -o src/assets/css",
-    "serve": "parallelshell \"npm run browser-sync\" \"npm run node-sass\""
+    "serve": "parallelshell \"npm run browser-sync\" \"npm run css:watch\""
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "autoprefixer": "^5.2.0",
     "browser-sync": "^2.8.0",
     "jspm": "^0.15.7",
     "node-sass": "^3.2.0",
