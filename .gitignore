@@ -1,0 +1,10 @@
+#Intellij
+**/.idea/workspace.xml
+**/.idea/tasks.iml
+
+#CSS
+src/assets/css
+
+#JS
+node_modules
+src/jspm_packages

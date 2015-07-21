@@ -1,0 +1,30 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "browser-sync": "browser-sync start --server src --files=\"src/*.js,src/components/*.js,src/*.html,src/assets/css/*.css\"",
+    "node-sass": "node-sass -w src/assets/scss -o src/assets/css",
+    "serve": "parallelshell \"npm run browser-sync\" \"npm run node-sass\""
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "browser-sync": "^2.8.0",
+    "node-sass": "^3.2.0",
+    "parallelshell": "^1.2.0",
+    "postcss-cli": "^1.5.0",
+    "watch": "^0.16.0"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "src"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "ecmaFeatures": {
+    //Modules + global strict
+    "modules": true,
+    "jsx": true
+  },
+  "rules": {
+    "quotes": [
+      //enable rule
+      1,
+      "single"
+    ],
+    //Development rules
+    //Allow console
+    "no-console": 0,
+    //Allow debugger
+    "no-debugger": 0,
+    //Allow files to end without a newline
+    "eol-last": 0
+  },
+  "plugins": [
+    "react"
+  ]
+}
