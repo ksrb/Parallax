@@ -1,8 +1,9 @@
 //Base styles
-$perspective-val: 1px;
+$perspective: 100;
 .parallax {
-  perspective: $perspective-val;
-  perspective-origin: 100%;
+  perspective: $perspective + px;
+  //http://www.w3.org/TR/css-transforms-1/#3d-transform-rendering
+  //perspective-origin: 100%;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
@@ -13,63 +14,33 @@ $perspective-val: 1px;
     transform-style: preserve-3d;
   }
 
-  @mixin set-group-z-indexes($num-groups) {
-    @for $i from 1 through $num-groups {
-      .group:nth-child(#{$i}) {
-        z-index: $num-groups - $i;
+  $numbers-in-english: (
+          'one', 'two', 'three',
+          'four', 'five', 'six',
+          'seven', 'eight', 'nine',
+  );
+
+  @mixin create-layers($num-layers, $separate-by: 200) {
+    $distance: 0;
+    @for $i from 1 through $num-layers {
+      &.#{nth($numbers-in-english, $i)} {
+        transform: translateZ($distance + px) scale(1 + ($distance * -1)/$perspective);
+        $distance: $distance - $separate-by;
       }
     }
   }
 
-  @include set-group-z-indexes(3);
-
   .layer {
-    $z-index: 0;
-    transform-origin: 100%;
+    //transform-origin: 100%;
     position: absolute;
     width: 100%;
     height: 100%;
-
-    &.base {
-      $z-index: $z-index + 1;
-      transform: translateZ(0);
-      z-index: $z-index;
-    }
-
-    &.back {
-      $z-index: $z-index + 1;
-      transform: translateZ(-1px) scale(2);
-      z-index: $z-index;
-    }
-
-    &.back.more {
-      $z-index: $z-index + 1;
-      transform: translateZ(-2px) scale(3);
-      z-index: $z-index;
-    }
+    @include create-layers(4, 100);
   }
 }
 
 //Demo styles
 .parallax {
-
-  .group {
-    &:nth-child(1) {
-      .base {
-        background: skyblue;
-      }
-    }
-    &:nth-child(2) {
-      .base {
-        background: tomato;
-      }
-    }
-    &:nth-child(3) {
-      .base {
-        background: chocolate;
-      }
-    }
-  }
 
   .layer {
     //Center all content
