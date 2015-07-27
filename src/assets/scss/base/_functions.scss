@@ -1,0 +1,28 @@
+/*
+* The functions are copies, with some minor modifications from Zurb Foundations here:
+* https://github.com/zurb/foundation/blob/master/scss/foundation/_functions.scss
+*/
+$rem-base: 16px !default;
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@function convert-to-rem($value) {
+  @if $value == 0rem {
+    @return 0;
+  }
+  @return strip-unit($value) / strip-unit($rem-base) * 1rem;
+}
+
+@function rem-calc($values, $base-unit : $rem-base) {
+  $length: length($values);
+  @if $length == 1 {
+    @return convert-to-rem($values);
+  }
+  $rem-values: ();
+  @each $value in $values {
+    $rem-values: append($rem-values, convert-to-rem($value))
+  }
+  @return $rem-values;
+}

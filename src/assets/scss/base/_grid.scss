@@ -1,0 +1,17 @@
+@import "functions";
+
+$numbers: ('one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve');
+
+@mixin create-grid($num-cols:12) {
+  @for $i from 1 through $num-cols {
+    .col {
+      display: flex;
+
+      &.#{nth($numbers, $i)} {
+        flex-basis: ($i/$num-cols)*100%;
+      }
+    }
+  }
+}
+
+@include create-grid();

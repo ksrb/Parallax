@@ -1,0 +1,16 @@
+@import "functions";
+@import "mixins";
+@import "defaults";
+@import "reset";
+
+body {
+  font-size: $rem-base;
+  font-family: Helvetica Neue, Helvetica, Arial;
+}
+
+@include createHeaders();
+
+p {
+  margin: rem-calc(20px) 0;
+  line-height: 1.3;
+}
