@@ -1,27 +1,41 @@
-##React Hack Session##
+##React Hack Session
 
 Doing some project in React for LEARNING AND GLORY
 
 Explore:
 * Testing tools
+* ES6+
 * ImmutableJS
 * libsass
 * Build tool (?)
 * Yeoman generator for react(?)
 
-###parallax scroll###
+###Explore
+
+####ES6+
+* Experimenting with ES6 features and [ES7 strawman/stage 0](https://babeljs.io/docs/usage/experimental/) features
+    * [Proxies are not available](https://babeljs.io/docs/learn-es2015/#proxies) 
+
+###Notes
+
+####Parallax scroll
 Using CSS technique from [here](http://keithclark.co.uk/articles/pure-css-parallax-websites/)
 * Explores:
     * libsass
 
 Admittedly parallax scrolling doesn't have much to do with React but a positional bookmark system with undo and redo does &#9786;
 
-###package.json###
+####package.json
 
-* "css:build": "node-sass src/assets/scss/style.scss | npm run css:prefix -- src/assets/css/style.css"
+* "css:compile": "node-sass src/assets/scss/style.scss | npm run css:prefix -- src/assets/css/style.css"
     * node-sass src/assets/scss/style.scss - compile **file** style.scss (cannot node-sass on **directory** src/assets/scss as node-sass expects
     a output directory and will not print to stdout)
     * npm run css:prefix -- src/assets/css/style.css - prefix vendor specific css output to src/assets/css/style.css
+* "css:watch": "watch \"npm run css:compile\" src/assets/scss" - run npm:css:compile whenever any file from src/assets/scss changes
 
-###TODO###
+####Intellij
+* jspm_packages
+    * Remove from refactoring by setting folder as a library via **CTRL+SHIFT+S** ? **+** ? **JavaScript** ? Select the jspm_packages folder, uncheck all files ? Set as **Release** 
+
+####TODO
 * Set intellij to use 64bit and Java 8

@@ -4,10 +4,10 @@
   "main": "index.js",
   "scripts": {
     "css:prefix": "postcss --use autoprefixer -o",
-    "css:build": "node-sass src/assets/scss/style.scss | npm run css:prefix -- src/assets/css/style.css",
-    "css:watch": "watch \"npm run css:build\" src/assets/scss",
-    "browser-sync": "browser-sync start --server src --files=\"src/*.js,src/components/*.js,src/*.html,src/assets/css/*.css\"",
-    "serve": "parallelshell \"npm run browser-sync\" \"npm run css:watch\""
+    "css:compile": "node-sass src/assets/scss/style.scss | npm run css:prefix -- src/assets/css/style.css",
+    "css:watch": "watch \"npm run css:compile\" src/assets/scss",
+    "browser-sync": "browser-sync start --server src --files=\"src/*.js,src/components/*.js,src/*.html,src/assets/css/*.css,src/data/*\"",
+    "dev-server": "parallelshell \"npm run browser-sync\" \"npm run css:watch\""
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +24,11 @@
   "jspm": {
     "directories": {
       "baseURL": "src"
+    },
+    "dependencies": {
+      "fetch": "github:github/fetch@^0.9.0",
+      "marked": "npm:marked@^0.3.3",
+      "react": "npm:react@^0.14.0-beta1"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",
