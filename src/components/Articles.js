@@ -3,33 +3,10 @@ import MarkdownRenderer from "./MarkdownRenderer";
 
 class Articles extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {articles: []};
-    }
-
-    getArticles = () => {
-        return this.props.articles.map((currentValue, index, array) => {
-            return fetch(currentValue).then((response) => {
-                return response.text();
-            }).then((data) => {
-                return data;
-            });
-        });
-    };
-
-    componentDidMount() {
-        var promiseAll = Promise.all(this.getArticles());
-        promiseAll.then((data) => {
-            this.setState({articles: data});
-        })
-    }
-
     render() {
-
-        var articles = this.state.articles.map((currentValue, index, array) => {
+        var articles = this.props.data.map((currentValue, index, array) => {
             return (
-                <article>
+                <article key={index}>
                     <MarkdownRenderer>
                         {currentValue}
                     </MarkdownRenderer>
@@ -37,7 +14,7 @@ class Articles extends React.Component {
             );
         });
         return (
-            <div class="articles">
+            <div className="articles">
                 {articles}
             </div>
         );

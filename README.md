@@ -35,7 +35,11 @@ Admittedly parallax scrolling doesn't have much to do with React but a positiona
 
 ####Intellij
 * jspm_packages
-    * Remove from refactoring by setting folder as a library via **CTRL+SHIFT+S** ? **+** ? **JavaScript** ? Select the jspm_packages folder, uncheck all files ? Set as **Release** 
+    * Remove from refactoring by setting folder as a library via **CTRL+SHIFT+S** ? **+** ? **JavaScript** ? Select the jspm_packages folder, uncheck all files ? Set as **Release**
+* To reset Intellij documentation window (F2) go to config/options/dimensions.xml 
+<pre>
+&lt;size key="javadoc.popup.0.0.1920.1080" width="[reset this value]"/&gt;
+</pre> 
 
 ####TODO
 * Set intellij to use 64bit and Java 8
